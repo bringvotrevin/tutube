@@ -5,3 +5,5 @@
 - `/` : globalRoute
 - `/video` : videoRoute
 - `/user` : userRoute
+
+

@@ -1,31 +1,17 @@
 import express from "express";
+import morgan from "morgan";
+import globalRouter from "./router/globalRouter";
+import video from "./router/videoRouter";
+import user from "./router/userRouter";
 
 const PORT = 4000;
 const app = express();
+const logger = morgan("dev");
 
-
-const routerLogger = (req, res, next) => {
-	 console.log("PATH : ",  req.path);
-	 next();
-}
-
-const methodLogger = (req, res, next) => {
-	console.log("METHOD", req.method);
-	next();
-}
-
-const home = (req, res, next) => {
-	console.log("in home function");
-	return res.send("home");
-}
-
-const login = (req, res, next) => {
-	return res.send("login");
-}
-
-app.use(methodLogger, routerLogger);
-app.get('/', home);
-app.get('/login', login);
+app.use(logger);
+app.use('/', globalRouter);
+app.use('/video', video);
+app.use('/user', user);
 
 app.listen(PORT, function() {
 	console.log("server listening on port 4000...");
