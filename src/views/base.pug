@@ -5,6 +5,14 @@ html(lang="ko")
 		link(rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css")
 	body 
 		header 
+			nav
+				ul 
+					if user.login
+						li
+							a(href="/login") Login 
+					else
+						li 
+							a(href="/logout") Logout				
 			h1=pageTitle
 		main 
 			block content 
