@@ -9,11 +9,11 @@ html(lang="ko")
 				ul 
 					if user.login
 						li
-							a(href="/login") Login 
+							a(href="/logout") Logout 
 					else
 						li 
-							a(href="/logout") Logout				
+							a(href="/login") Login 
 			h1=pageTitle
 		main 
-			block content 
+			block content
 	include partials/footer.pug
