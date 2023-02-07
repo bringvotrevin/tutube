@@ -12,9 +12,9 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views" )
 
 app.use(logger);
-app.use('/', globalRouter);
 app.use('/video', videoRouter);
 app.use('/user', userRouter);
+app.use('/', globalRouter);
 
 app.listen(PORT, function() {
 	console.log("server listening on port 4000...");
