@@ -1,7 +1,7 @@
 doctype html
 html(lang="ko")
 	head
-		title ${pageTitle} | tutube 
+		title #{pageTitle} | tutube 
 		link(rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css")
 	body 
 		header 
@@ -11,7 +11,7 @@ html(lang="ko")
 						li
 							a(href="/logout") Logout 
 					else
-						li 
+						li
 							a(href="/login") Login 
 			h1=pageTitle
 		main 
