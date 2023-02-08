@@ -24,7 +24,17 @@ let videos = [
 
 export const trending = (req, res) => res.render("home", {pageTitle: "home", user, videos});
 export const watch = (req, res) => res.render("watch", {pageTitle: "watch", user});
-export const editVideo = (req, res) => res.render("editVideo", {pageTitle: "edit video", user});
+export const editVideo = (req, res) => {
+	const id = req.params.id;
+	const video = videos[id];
+	res.render("editVideo", {pageTitle: "edit video", user, video});
+}
+export const postVideo = (req, res) => {
+	const { id } = req.params;
+	const { title } = req.body;
+	videos[id].title = title;
+	// res.render("postVideo", {pageTitle: "post video", user, video});
+};
 export const deleteVideo = (req, res) => res.render("deleteVideo", {pageTitle: "delete video", user});
 export const upload = (req, res) => res.render("upload", {pageTitle: "upload video", user});
 // export const search = (req, res) => res.render("search");
