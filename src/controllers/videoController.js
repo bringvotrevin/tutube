@@ -23,17 +23,21 @@ let videos = [
 ]
 
 export const trending = (req, res) => res.render("home", {pageTitle: "home", user, videos});
-export const watch = (req, res) => res.render("watch", {pageTitle: "watch", user});
+export const watch = (req, res) => {
+	const index = req.params.id - 1;
+	const video = videos[index];
+	res.render("watch", {pageTitle: "watch", user, video});
+}
 export const editVideo = (req, res) => {
-	const id = req.params.id;
-	const video = videos[id];
+	const index = req.params.id - 1;
+	const video = videos[index];
 	res.render("editVideo", {pageTitle: "edit video", user, video});
 }
 export const postVideo = (req, res) => {
-	const { id } = req.params;
+	const { index } = req.params - 1;
 	const { title } = req.body;
-	videos[id].title = title;
-	// res.render("postVideo", {pageTitle: "post video", user, video});
+	videos[index].title = title;
+	res.render("postVideo", {pageTitle: "post video", user, video: videos[index]});
 };
 export const deleteVideo = (req, res) => res.render("deleteVideo", {pageTitle: "delete video", user});
 export const upload = (req, res) => res.render("upload", {pageTitle: "upload video", user});
