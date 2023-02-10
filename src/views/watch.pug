@@ -2,3 +2,7 @@ extends base.pug
 
 block content 
 	h2 watch [#{video.id}] video
+	ul
+		li Rate: #{video.rate}
+		li Views: #{video.views}
+	a(href=`/video/${video.id}/edit`) edit video
