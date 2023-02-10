@@ -34,7 +34,7 @@ export const editVideo = (req, res) => {
 	res.render("editVideo", {pageTitle: "edit video", user, video});
 }
 export const postVideo = (req, res) => {
-	const { index } = req.params - 1;
+	const index = req.params.id - 1;
 	const { title } = req.body;
 	videos[index].title = title;
 	res.render("postVideo", {pageTitle: "post video", user, video: videos[index]});
