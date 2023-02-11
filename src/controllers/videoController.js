@@ -37,7 +37,7 @@ export const postVideo = (req, res) => {
 	const index = req.params.id - 1;
 	const { title } = req.body;
 	videos[index].title = title;
-	res.render("postVideo", {pageTitle: "post video", user, video: videos[index]});
+	res.redirect(`/video/${req.params.id}`);
 };
 export const deleteVideo = (req, res) => res.render("deleteVideo", {pageTitle: "delete video", user});
 export const upload = (req, res) => res.render("upload", {pageTitle: "upload video", user});
