@@ -1,4 +1,7 @@
 extends base.pug
 
 block content 
-	h2 upload
+	h2 upload video
+	form(method="post")
+		input(name="title", placeholder="Video Title", required)
+		input(value="upload", type="submit")

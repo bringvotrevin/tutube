@@ -22,6 +22,15 @@ let videos = [
 	}
 ]
 
+const initVideo = (obj, title, id) => {
+	obj.title = title;
+	obj.id =  id;
+	obj.rate = 0;
+	obj.views = 0;
+	obj.comments = 0;
+	obj.createdAt = "0 min ago";
+};
+
 export const trending = (req, res) => res.render("home", {pageTitle: "home", user, videos});
 export const watch = (req, res) => {
 	const index = req.params.id - 1;
@@ -40,6 +49,16 @@ export const postVideo = (req, res) => {
 	res.redirect(`/video/${req.params.id}`);
 };
 export const deleteVideo = (req, res) => res.render("deleteVideo", {pageTitle: "delete video", user});
-export const upload = (req, res) => res.render("upload", {pageTitle: "upload video", user});
+export const getUpload = (req, res) => {
+	res.render("upload", {pageTitle: "upload video", user});
+}
+export const postUpload = (req, res) => {
+	const { title } = res.params;
+	const newVideo = new Object;
+	initVideo(newVideo, title, videos.length);
+	videos.push(newVideo);
+	res.redirect('/');
+}
+
 // export const search = (req, res) => res.render("search");
 // export const share = (req, res) => res.render("share");

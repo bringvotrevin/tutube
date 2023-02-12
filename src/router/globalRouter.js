@@ -8,5 +8,6 @@ globalRouter.use('/login', login);
 globalRouter.use('/logout', logout);
 globalRouter.use('/join', join);
 globalRouter.use('/', trending);
+globalRouter.route('/upload').get(getUpload).post(postUpload);
 
 export default globalRouter;
