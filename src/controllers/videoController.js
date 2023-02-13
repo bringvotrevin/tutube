@@ -53,7 +53,7 @@ export const getUpload = (req, res) => {
 	res.render("upload", {pageTitle: "upload video", user});
 }
 export const postUpload = (req, res) => {
-	const { title } = res.params;
+	const { title } = req.body;
 	const newVideo = new Object;
 	initVideo(newVideo, title, videos.length);
 	videos.push(newVideo);
