@@ -1,8 +1,10 @@
+import "./db";
 import express from "express";
 import morgan from "morgan";
 import globalRouter from "./router/globalRouter";
 import videoRouter from "./router/videoRouter";
 import userRouter from "./router/userRouter";
+
 
 const PORT = 4000;
 const app = express();
