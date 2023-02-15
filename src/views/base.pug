@@ -11,12 +11,12 @@ html(lang="ko")
 						a(href="/") Home
 					li
 						a(href="/upload") Upload
-					if user.login
-						li
-							a(href="/logout") Logout 
-					else
-						li
-							a(href="/login") Login 
+					//- if user.login
+					//- 	li
+					//- 		a(href="/logout") Logout 
+					//- else
+					//- 	li
+					//- 		a(href="/login") Login 
 			h1=pageTitle
 		main 
 			block content

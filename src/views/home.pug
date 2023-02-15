@@ -1,4 +1,4 @@
-extends base.pug
+extends base
 include partials/video
 
 block content 
@@ -6,3 +6,5 @@ block content
 	ul
 		each video in videos
 			+video(video)
+		else
+			p nothing 
