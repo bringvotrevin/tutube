@@ -1,8 +1,7 @@
-import express from "express";
-import {watch, editVideo, postVideo, search, deleteVideo, share, getUpload, postUpload} from "../controllers/videoController";
+import express from 'express';
+import { watch, editVideo, postVideo, search, deleteVideo, share, getUpload, postUpload } from '../controllers/videoController';
 
 const videoRouter = express.Router();
-
 
 videoRouter.get('/:id(\\d+)', watch);
 videoRouter.route('/:id(\\d+)/edit').get(editVideo).post(postVideo);

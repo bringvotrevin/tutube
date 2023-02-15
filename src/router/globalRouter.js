@@ -1,8 +1,8 @@
 import express from 'express';
-import {trending, getUpload, postUpload} from '../controllers/videoController';
-import {login, logout, join} from '../controllers/userController';
-const globalRouter = express.Router();
+import { trending, getUpload, postUpload } from '../controllers/videoController';
+import { login, logout, join } from '../controllers/userController';
 
+const globalRouter = express.Router();
 
 globalRouter.use('/login', login);
 globalRouter.use('/logout', logout);
