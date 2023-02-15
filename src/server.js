@@ -1,12 +1,9 @@
-import './db';
-import './models/Video';
 import express from 'express';
 import morgan from 'morgan';
 import globalRouter from './router/globalRouter';
 import videoRouter from './router/videoRouter';
 import userRouter from './router/userRouter';
 
-const PORT = 4000;
 const app = express();
 const logger = morgan('dev');
 
@@ -19,6 +16,4 @@ app.use('/video', videoRouter);
 app.use('/user', userRouter);
 app.use('/', globalRouter);
 
-app.listen(PORT, () => {
-  console.log('server listening on port 4000...');
-});
+export default app;
