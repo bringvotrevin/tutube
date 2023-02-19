@@ -19,16 +19,18 @@ export const getUpload = (req, res) => {
   res.render('upload', { pageTitle: 'upload video' });
 };
 export const postUpload = async (req, res) => {
-  const { title, description, hashTags } = req.params;
+  const { title, description, hashTags } = req.body;
   const video = new Video({
     title,
     description,
-    hashTags,
-    createdAt: new Date(),
-    views: 0,
-    rating: 0,
+    createdAt: Date.now(),
+    hashTags: hashTags.split(',').map((word) => `#${word}`),
+    meta: {
+      views: 0,
+      rating: 0,
+    },
   });
-  await video.save;
+  await video.save();
   res.redirect('/');
 };
 
