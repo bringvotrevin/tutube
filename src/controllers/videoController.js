@@ -14,7 +14,17 @@ export const editVideo = (req, res) => {
 export const postEditedVideo = (req, res) => {
   res.redirect(`/video/${req.params.id}`);
 };
-export const deleteVideo = (req, res) => res.render('deleteVideo', { pageTitle: 'delete video' });
+export const getDeleteVideo = async (req, res) => {
+  const videos = await Video.find({});
+  res.render('deleteVideo', { pageTitle: 'delete video', videos });
+};
+export const postDeleteVideo = (req, res) => {
+  const { title } = req.body;
+  Video.deleteOne({ title }, (err) => {
+    if (err) console.log(err);
+  });
+  return res.redirect('/delete');
+};
 export const getUpload = (req, res) => {
   res.render('upload', { pageTitle: 'upload video' });
 };

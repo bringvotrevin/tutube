@@ -1,4 +1,12 @@
 extends base.pug
+include partials/video
 
 block content 
 	h2 delete video
+	each video in videos
+		+video(video)
+	br
+	h3 write a title of the video you want to delete
+	form(method='post')
+		input(name='title', placeholder='Title', type='text', required)
+		input(value='delete', type='submit')

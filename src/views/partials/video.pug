@@ -1,6 +1,6 @@
 mixin video(video)
 	a(href=`/video/${video.id}`) #{video.title}
 	ul
-		li Rate: #{video.rate}
-		li Views: #{video.views}
+		li Views: #{video.meta.views}
+		li Rating: #{video.meta.rating}
 	
