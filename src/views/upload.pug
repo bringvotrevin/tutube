@@ -3,7 +3,7 @@ extends base.pug
 block content 
 	h2 upload video
 	form(method='post')
-		input(name='title', placeholder='Title', type='text', required)
-		input(name='description', placeholder='Description', type='text',required)
-		input(name='hashTags', placeholder='hashtags, separated by comma', type='text', required)
+		input(name='title', placeholder='Title', type='text', required, minlength=5)
+		input(name='description', placeholder='Description', type='text', maxlength=50)
+		input(name='hashTags', placeholder='hashtags, separated by comma', type='text')
 		input(value='upload video', type='submit')
