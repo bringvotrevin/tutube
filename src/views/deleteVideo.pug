@@ -3,10 +3,11 @@ include partials/video
 
 block content 
 	h2 delete video
+	h3 video list
 	each video in videos
 		+video(video)
 	br
 	h3 write a title of the video you want to delete
 	form(method='post')
-		input(name='title', placeholder='Title', type='text', required)
+		input(name='title', placeholder='Title', required, type='text')
 		input(value='delete', type='submit')

@@ -1,8 +1,8 @@
 extends base.pug
 
 block content 
-	h2 watch [#{video.id}] video
+	h2 watch [#{video._id}] video
 	ul
-		li Rate: #{video.rate}
-		li Views: #{video.views}
-	a(href=`/video/${video.id}/edit`) edit video
+		li Rating: #{video.meta.rating}
+		li Views: #{video.meta.views}
+	a(href=`/video/${video._id}/edit`) edit video

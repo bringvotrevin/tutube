@@ -5,8 +5,13 @@ export const home = async (req, res) => {
   console.log(videos);
   res.render('home', { pageTitle: 'home', videos });
 };
-export const watch = (req, res) => {
-  res.render('watch', { pageTitle: 'watch' });
+export const watch = async (req, res) => {
+  const { id } = req.params;
+  const video = await Video.findById(id);
+  if (video) {
+    return res.render('watch', { pageTitle: 'watch', video });
+  }
+  return res.render('error', { pageTitle: 'Video not found', id });
 };
 export const editVideo = (req, res) => {
   res.render('editVideo', { pageTitle: 'edit video' });
@@ -33,12 +38,7 @@ export const postUpload = async (req, res) => {
   const video = new Video({
     title,
     description,
-    createdAt: Date.now(),
     hashTags: hashTags.split(',').map((word) => `#${word}`),
-    meta: {
-      views: 0,
-      rating: 0,
-    },
   });
   await video.save();
   res.redirect('/');
