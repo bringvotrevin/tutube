@@ -5,4 +5,6 @@ block content
 	ul
 		li Rating: #{video.meta.rating}
 		li Views: #{video.meta.views}
-	a(href=`/video/${video._id}/edit`) edit video
+	a(href=`${video.id}/edit`) -> edit video
+	br
+	a(href=`${video.id}/delete`) -> delete video
