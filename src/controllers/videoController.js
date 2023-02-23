@@ -13,10 +13,19 @@ export const watch = async (req, res) => {
   }
   return res.render('error', { pageTitle: 'Video not found', id });
 };
-export const editVideo = (req, res) => {
-  res.render('editVideo', { pageTitle: 'edit video' });
+export const editVideo = async (req, res) => {
+  const { id } = req.params;
+  const video = await Video.findById(id);
+  res.render('editVideo', { pageTitle: 'edit video', video });
 };
-export const postEditedVideo = (req, res) => {
+export const postEditedVideo = async (req, res) => {
+  const { id } = req.params;
+  const { title, description, hashTags } = req.body;
+  await Video.findByIdAndUpdate(id, {
+    title,
+    description,
+    hashTags: hashTags.split(',').map((hashTag) => (hashTag.startsWith('#') ? hashTag : `#${hashTag}`)),
+  });
   res.redirect(`/video/${req.params.id}`);
 };
 export const deleteVideo = async (req, res) => {

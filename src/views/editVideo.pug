@@ -1,7 +1,10 @@
 extends base.pug
 
 block content 
-	h2 Edit [#{video.id}] video title
+	h2 video
+	h2 Edit [#{video.title}] video title
 	form(method="post")
-		input(name="title", placeholder="Video Title", required)
+		input(name="title", value=video.title)
+		input(name="description", value=video.description)
+		input(name='hashTags', value=video.hashTags.join())
 		input(value="save", type="submit")
