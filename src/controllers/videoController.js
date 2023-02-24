@@ -48,5 +48,13 @@ export const postUpload = async (req, res) => {
   res.redirect('/');
 };
 
-// export const search = (req, res) => res.render("search");
+export const search = async (req, res) => {
+  const { videoTitle } = req.query;
+  const exist = await Video.exists({ title: videoTitle });
+  if (!exist) {
+    return res.render('search');
+  }
+  const video = await Video.find({ title: videoTitle });
+  return res.render('watch', { pageTitle: 'watch', video });
+};
 // export const share = (req, res) => res.render("share");

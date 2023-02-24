@@ -1,0 +1,8 @@
+extend base
+include partials/video
+
+block content 
+	h3 put a title of video that you are looking for
+	form(method='get')
+		input(name='videoTitle', placeholder='video title', required)
+		input(value='save', type='submit')
