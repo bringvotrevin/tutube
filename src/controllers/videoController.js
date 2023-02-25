@@ -54,7 +54,7 @@ export const search = async (req, res) => {
   if (!exist) {
     return res.render('search');
   }
-  const video = await Video.find({ title: videoTitle });
+  const video = await Video.findOne({ title: videoTitle });
   return res.render('watch', { pageTitle: 'watch', video });
 };
 // export const share = (req, res) => res.render("share");
