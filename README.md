@@ -4,9 +4,7 @@
 
 - `/` : home
 - `/upload` : getUpload, postUpload
-- `/login` : login
-- `/logout` : logout
-- `/join` : join
+- `/search` : search
 
 - `/user`
 
@@ -17,7 +15,6 @@
 
 - `/video`
   - `/(video id)` : watch
-  - `/(video id)/edit` : editVideo, postEditVideo
+  - `/(video id)/edit` : editVideo, postEditedVideo
   - `/(video id)/delete` : deleteVideo
-    <!-- - `/search` -->
     <!-- - `/share` -->
