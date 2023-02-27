@@ -55,6 +55,6 @@ export const search = async (req, res) => {
     return res.render('search');
   }
   const video = await Video.findOne({ title: videoTitle });
-  return res.render('watch', { pageTitle: 'watch', video });
+  return res.redirect(`/video/${video._id}`);
 };
 // export const share = (req, res) => res.render("share");
