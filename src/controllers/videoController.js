@@ -24,7 +24,7 @@ export const postEditedVideo = async (req, res) => {
   await Video.findByIdAndUpdate(id, {
     title,
     description,
-    hashTags: hashTags.split(',').map((hashTag) => (hashTag.startsWith('#') ? hashTag : `#${hashTag}`)),
+    hashTags: Video.formatHashTags(hashTags),
   });
   res.redirect(`/video/${req.params.id}`);
 };
@@ -42,7 +42,7 @@ export const postUpload = async (req, res) => {
   const video = new Video({
     title,
     description,
-    hashTags: hashTags.split(',').map((word) => `#${word}`),
+    hashTags: Video.formatHashTags(hashTags),
   });
   await video.save();
   res.redirect('/');
