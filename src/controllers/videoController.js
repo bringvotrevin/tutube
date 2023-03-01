@@ -50,11 +50,14 @@ export const postUpload = async (req, res) => {
 
 export const search = async (req, res) => {
   const { videoTitle } = req.query;
-  const exist = await Video.exists({ title: videoTitle });
-  if (!exist) {
-    return res.render('search');
+  let videos = [];
+  if (videoTitle) {
+    videos = await Video.find({ title: {
+      $regex: `${videoTitle}`,
+      $options: 'i',
+    },
+    });
   }
-  const video = await Video.findOne({ title: videoTitle });
-  return res.redirect(`/video/${video._id}`);
+  return res.render('search', { pageTitle: 'search', videos });
 };
 // export const share = (req, res) => res.render("share");

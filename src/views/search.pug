@@ -6,3 +6,8 @@ block content
 	form(method='get')
 		input(name='videoTitle', placeholder='video title', required)
 		input(value='save', type='submit')
+	ul
+		each video in videos
+			+video(video)
+		else
+			p nothing
