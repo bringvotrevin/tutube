@@ -2,3 +2,11 @@ extends base.pug
 
 block content 
 	h2 Join
+	form(method='post')
+		input(name='userName', placeholder='UserName', type='text', required)
+		input(name='email', placeholder='Email', type='email', required)
+		input(name='password', placeholder='Password', type='password', required)
+		input(name='name', placeholder='Name', type='text')
+		input(name='location', placeholder='Location', type='text')
+		input(value='Join', type='submit')
+
