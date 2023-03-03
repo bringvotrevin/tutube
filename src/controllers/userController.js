@@ -1,6 +1,17 @@
 import User from '../models/User';
 
-export const login = (req, res) => res.render('login', { pageTitle: 'login' });
+export const getLogin = (req, res) => {
+  res.render('login', { pageTitle: 'login' });
+};
+export const postLogin = async (req, res) => {
+  const { userName, password } = req.body;
+  const userNameExists = await User.exists({ userName });
+  const passwordExists = await User.exists({ password });
+  if (userNameExists && passwordExists) {
+    res.redirect('/');
+  }
+  res.redirect('/upload');
+};
 export const logout = (req, res) => res.render('logout', { pageTitle: 'logout' });
 export const getJoin = (req, res) => {
   res.render('join', { pageTitle: 'join' });
@@ -11,7 +22,7 @@ export const postJoin = async (req, res) => {
     userName, email, password, name, location,
   });
   await user.save();
-  res.end();
+  return res.redirect('login');
 };
 export const editProfile = (req, res) => res.render('editProfile', { pageTitle: 'editProfile' });
 export const deleteProfile = (req, res) => res.render('deleteProfile', { pageTitle: 'deleteProfile' });
