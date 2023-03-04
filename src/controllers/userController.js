@@ -8,9 +8,21 @@ export const postLogin = async (req, res) => {
   const userNameExists = await User.exists({ userName });
   const passwordExists = await User.exists({ password });
   if (userNameExists && passwordExists) {
-    res.redirect('/');
+    res.redirect('Home');
   }
-  res.redirect('/upload');
+  res.redirect('/login');
+};
+export const getDeleteProfile = (req, res) => {
+  res.render('deleteProfile', { pageTitle: 'delete Profile' });
+};
+export const postDeleteProfile = async (req, res) => {
+  const { userName, password } = req.body;
+  const userByName = await User.findOne({ userName });
+  const userByPassword = await User.findOne({ password });
+  if (userByName === userByPassword) {
+    await User.findByIdAndDelete(userByName._id);
+  }
+  return res.redirect('/');
 };
 export const logout = (req, res) => res.render('logout', { pageTitle: 'logout' });
 export const getJoin = (req, res) => {

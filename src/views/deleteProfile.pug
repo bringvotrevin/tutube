@@ -2,3 +2,7 @@ extends base.pug
 
 block content 
 	h2 delete profile
+	form(method='POST')
+		input(name='userName', placeholder='UserName', type='text', required)
+		input(name='password', placeholder='Password', type='text', required)
+		input(value="Delete", type="submit")
