@@ -5,11 +5,13 @@
 - `/` : home
 - `/upload` : getUpload, postUpload
 - `/search` : search
+- `/join` : getJoin, postJoin
+- `/login` : getLogin, postLogin
 
 - `/user`
 
   - `/profile` : editProfile
-  - `/delete` : deleteProfile
+  - `/delete` : getDeleteProfile, postDeleteProfile
     <!-- - `/detail` -->
     <!-- - `/changePassword` -->
 
