@@ -20,5 +20,3 @@
   - `/(video id)/edit` : editVideo, postEditedVideo
   - `/(video id)/delete` : deleteVideo
     <!-- - `/share` -->
-
-.
